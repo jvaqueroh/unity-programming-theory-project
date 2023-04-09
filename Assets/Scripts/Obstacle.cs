@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    private Rigidbody obstacleRigidBody;
-    private float speed = 20.0f;
+    protected Rigidbody obstacleRigidBody;
+    protected float speed = 20.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,11 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        obstacleRigidBody.AddForce(-Vector3.forward * speed); 
+        Move();
+    }
+
+    protected virtual void Move()
+    {
+        obstacleRigidBody.AddForce(-Vector3.forward * speed);
     }
 }
