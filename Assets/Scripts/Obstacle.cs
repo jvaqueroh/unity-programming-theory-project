@@ -9,6 +9,7 @@ public class Obstacle : MonoBehaviour
     private PlayerController playerController;
     protected float speed = 20.0f;
     protected int strength = 10;
+    private readonly float zBoundary = -7.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
         Move();
+        CheckBoundaries();
     }
 
     protected virtual void Move()
@@ -33,6 +35,14 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerController.TakeDamage(strength);
+        }
+    }
+
+    private void CheckBoundaries()
+    {
+        if (transform.position.z < zBoundary)
+        {
+            Destroy(gameObject);
         }
     }
 }
