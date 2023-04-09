@@ -7,5 +7,6 @@ public class ObstacleEasy : Obstacle
     public ObstacleEasy() : base()
     {
         speed = 10.0f;
+        strength = 5;
     }
 }
