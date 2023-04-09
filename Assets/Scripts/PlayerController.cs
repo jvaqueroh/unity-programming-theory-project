@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRigidBody;
-    private float speed = 30.0f;
+    private readonly float speed = 30.0f;
     private int health = 100;
     private bool gameActive = true;
 
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRigidBody.AddForce(Vector3.right * Input.GetAxis("Horizontal") * speed);
+        playerRigidBody.AddForce(Input.GetAxis("Horizontal") * speed * Vector3.right);
     }
 
     public void TakeDamage(int damage)

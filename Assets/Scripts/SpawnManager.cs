@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -7,12 +5,12 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject obstacleEasy;
     [SerializeField] private GameObject obstacleNormal;
     [SerializeField] private GameObject obstacleHard;
-    private float xRange = 3.2f;
+    private readonly float xRange = 3.2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObstacle", 1.0f, 1.0f);
+        InvokeRepeating(nameof(SpawnObstacle), 1.0f, 1.0f);
     }
 
     // Update is called once per frame
