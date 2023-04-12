@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public bool IsGameActive { get; set; }
     [SerializeField] private float obstaclesDelay = 3.0f;
+    [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI healthText;
     SpawnManager spawnManager;
 
     // Start is called before the first frame update
@@ -26,6 +29,11 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         IsGameActive = false;
+        gameOverText.gameObject.SetActive(true);
+    }
+
+    public void NotifyHealthChange(int remainingHealth) {
+        healthText.text = $"Health: {remainingHealth}";
     }
 
     private IEnumerator SpawnObstacles()
