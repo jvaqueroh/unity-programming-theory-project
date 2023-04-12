@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(SpawnObstacle), 1.0f, 1.0f);
+        //InvokeRepeating(nameof(SpawnObstacle), 1.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void SpawnObstacle()
+    public void SpawnObstacle()
     {
         var i = Random.Range(0, 3);
         switch (i)

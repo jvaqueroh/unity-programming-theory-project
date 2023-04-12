@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRigidBody;
     private readonly float speed = 30.0f;
     private int health = 100;
-    private bool gameActive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +27,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Player health: {health}");
         if (health <= 0)
         {
-            gameActive = false;
             Debug.Log($"Game Over!");
         }
     }
