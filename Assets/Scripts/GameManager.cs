@@ -17,6 +17,17 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnObstacles());
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void GameOver()
+    {
+        IsGameActive = false;
+    }
+
     private IEnumerator SpawnObstacles()
     {
         while (IsGameActive)
@@ -24,11 +35,5 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(obstaclesDelay);
             spawnManager.SpawnObstacle();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -6,19 +6,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject obstacleNormal;
     [SerializeField] private GameObject obstacleHard;
     private readonly float xRange = 3.2f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //InvokeRepeating(nameof(SpawnObstacle), 1.0f, 1.0f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
-    }
-
     public void SpawnObstacle()
     {
         var i = Random.Range(0, 3);

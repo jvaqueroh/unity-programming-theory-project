@@ -6,19 +6,25 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRigidBody;
-    private readonly float speed = 30.0f;
+    private readonly float horizontal_speed = 30.0f;
+    private readonly float vertical_speed = 20.0f;
     private int health = 100;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerRigidBody = GetComponent<Rigidbody>();   
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerRigidBody.AddForce(Input.GetAxis("Horizontal") * speed * Vector3.right);
+        if (!gameManager.IsGameActive) return;
+
+        playerRigidBody.AddForce(Input.GetAxis("Horizontal") * horizontal_speed * Vector3.right);
+        playerRigidBody.AddForce(Input.GetAxis("Vertical") * vertical_speed * Vector3.forward);
     }
 
     public void TakeDamage(int damage)
@@ -28,6 +34,7 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log($"Game Over!");
+            gameManager.GameOver();
         }
     }
 }
