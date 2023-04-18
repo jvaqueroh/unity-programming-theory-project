@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public bool IsGameActive { get; set; }
     [SerializeField] private float obstaclesDelay = 3.0f;
     [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private Button backToMenuButton;
     [SerializeField] private TextMeshProUGUI healthText;
     SpawnManager spawnManager;
 
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         IsGameActive = false;
         gameOverText.gameObject.SetActive(true);
+        backToMenuButton.gameObject.SetActive(true);
     }
 
     public void NotifyHealthChange(int remainingHealth) {
