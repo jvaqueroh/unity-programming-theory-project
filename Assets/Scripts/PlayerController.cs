@@ -30,11 +30,9 @@ public class PlayerController : MovingObject
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log($"Player health: {health}");
         gameManager.NotifyHealthChange(health);
         if (health <= 0)
         {
-            Debug.Log($"Game Over!");
             gameManager.GameOver();
         }
     }
@@ -42,7 +40,6 @@ public class PlayerController : MovingObject
     protected override void OnOutOfBoundaries()
     {
         base.OnOutOfBoundaries();
-        Debug.Log($"Game Over!");
         gameManager.GameOver();
     }
 }

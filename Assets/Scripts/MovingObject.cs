@@ -8,7 +8,6 @@ namespace Assets.Scripts
 
         protected virtual void Update()
         {
-            Debug.Log("MovingObject.Update");
             CheckBoundaries();
         }
 
