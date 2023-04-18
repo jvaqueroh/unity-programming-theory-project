@@ -16,10 +16,10 @@ public class Obstacle : MovingObject
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         Move();
-        CheckBoundaries();
     }
 
     protected virtual void Move()

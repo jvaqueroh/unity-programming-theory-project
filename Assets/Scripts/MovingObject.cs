@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
     public abstract class MovingObject: MonoBehaviour
     {
-        [SerializeField] private readonly float zBoundary = -7.0f;
+        [SerializeField] protected readonly float zBoundary = -7.0f;
+
+        protected virtual void Update()
+        {
+            Debug.Log("MovingObject.Update");
+            CheckBoundaries();
+        }
 
         protected virtual void CheckBoundaries()
         {
             if (transform.position.z < zBoundary)
             {
-                Destroy(gameObject);
+                OnOutOfBoundaries();
             }
+        }
+
+        protected virtual void OnOutOfBoundaries()
+        {
+            Destroy(gameObject);
         }
     }
 }

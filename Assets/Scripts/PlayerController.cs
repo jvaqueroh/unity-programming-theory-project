@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MovingObject
 {
     [SerializeField] private int health = 100;
     private Rigidbody playerRigidBody;
@@ -21,8 +18,9 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (!gameManager.IsGameActive) return;
 
         playerRigidBody.AddForce(Input.GetAxis("Horizontal") * horizontal_speed * Vector3.right);
@@ -39,5 +37,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log($"Game Over!");
             gameManager.GameOver();
         }
+    }
+
+    protected override void OnOutOfBoundaries()
+    {
+        base.OnOutOfBoundaries();
+        Debug.Log($"Game Over!");
+        gameManager.GameOver();
     }
 }
