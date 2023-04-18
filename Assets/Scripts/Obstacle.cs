@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using Assets.Scripts;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : MovingObject
 {
     protected Rigidbody obstacleRigidBody;
     private PlayerController playerController;
     protected float speed = 20.0f;
     protected int strength = 10;
-    private readonly float zBoundary = -7.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,14 +32,6 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerController.TakeDamage(strength);
-        }
-    }
-
-    private void CheckBoundaries()
-    {
-        if (transform.position.z < zBoundary)
-        {
-            Destroy(gameObject);
         }
     }
 }
