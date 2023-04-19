@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public bool IsGameActive { get; set; }
+
     [SerializeField] private float obstaclesDelay = 3.0f;
     [SerializeField] private Button backToMenuButton;
     [SerializeField] private TextMeshProUGUI gameOverText;
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     SpawnManager spawnManager;
     private int totalScore = 0;
+    private int currentLevel;
+    private int levelUpStep = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +51,24 @@ public class GameManager : MonoBehaviour
     {
         totalScore += points;
         scoreText.text = $"Score: {totalScore}";
+
+        CheckDifficulty(totalScore);
+    }
+
+    private void CheckDifficulty(int totalScore)
+    {
+        var level = totalScore / levelUpStep;
+
+        if(level > currentLevel)
+        {
+            currentLevel = level;
+            obstaclesDelay -= 0.1f;
+        }
+
+        if(level % 10 == 0)
+        {
+            levelUpStep += 20;
+        }
     }
 
     private IEnumerator SpawnObstacles()
