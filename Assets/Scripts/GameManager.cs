@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
 {
     public bool IsGameActive { get; set; }
     [SerializeField] private float obstaclesDelay = 3.0f;
-    [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private Button backToMenuButton;
+    [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI scoreText;
     SpawnManager spawnManager;
+    private int totalScore = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +37,17 @@ public class GameManager : MonoBehaviour
         backToMenuButton.gameObject.SetActive(true);
     }
 
+    //ToDo: implement as event
     public void NotifyHealthChange(int remainingHealth) {
+        
         healthText.text = $"Health: {remainingHealth}";
+    }
+
+    //ToDo: implement as event
+    public void NotifyObstaclePassed(int points)
+    {
+        totalScore += points;
+        scoreText.text = $"Score: {totalScore}";
     }
 
     private IEnumerator SpawnObstacles()

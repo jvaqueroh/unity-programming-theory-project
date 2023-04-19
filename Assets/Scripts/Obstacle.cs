@@ -5,6 +5,7 @@ public class Obstacle : MovingObject
 {
     protected Rigidbody obstacleRigidBody;
     private PlayerController playerController;
+    private GameManager gameManager;
     protected float speed = 20.0f;
     protected int strength = 10;
 
@@ -13,6 +14,7 @@ public class Obstacle : MovingObject
     {
         obstacleRigidBody = GetComponent<Rigidbody>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -33,5 +35,11 @@ public class Obstacle : MovingObject
         {
             playerController.TakeDamage(strength);
         }
+    }
+
+    protected override void OnOutOfBoundaries()
+    {
+        base.OnOutOfBoundaries();
+        gameManager.NotifyObstaclePassed(strength);
     }
 }
