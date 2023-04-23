@@ -4,7 +4,7 @@ namespace Assets.Scripts
 {
     public abstract class MovingObject: MonoBehaviour
     {
-        [SerializeField] protected readonly float zBoundary = -7.0f;
+        [SerializeField] protected readonly float zBoundary = -12.0f;
 
         protected virtual void Update()
         {
