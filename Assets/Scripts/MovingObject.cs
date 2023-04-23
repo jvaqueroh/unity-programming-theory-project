@@ -9,7 +9,10 @@ namespace Assets.Scripts
         protected virtual void Update()
         {
             CheckBoundaries();
+            Move();
         }
+
+        protected abstract void Move();
 
         protected virtual void CheckBoundaries()
         {

@@ -21,10 +21,9 @@ public class Obstacle : MovingObject
     protected override void Update()
     {
         base.Update();
-        Move();
     }
 
-    protected virtual void Move()
+    protected override void Move()
     {
         obstacleRigidBody.AddForce(-Vector3.forward * speed);
     }

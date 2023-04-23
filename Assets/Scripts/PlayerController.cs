@@ -21,19 +21,21 @@ public class PlayerController : MovingObject
     // Update is called once per frame
     protected override void Update()
     {
-        base.Update();
         if (!gameManager.IsGameActive) return;
+        base.Update();
+    }
 
+    protected override void Move()
+    {
         playerRigidBody.AddForce(Input.GetAxis("Horizontal") * horizontal_speed * Vector3.right);
         if (transform.position.z > zBoundaryMax)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, zBoundaryMax);
         }
-        else 
-        { 
-            playerRigidBody.AddForce(Input.GetAxis("Vertical") * vertical_speed * Vector3.forward); 
+        else
+        {
+            playerRigidBody.AddForce(Input.GetAxis("Vertical") * vertical_speed * Vector3.forward);
         }
-
     }
 
     public void TakeDamage(int damage)
