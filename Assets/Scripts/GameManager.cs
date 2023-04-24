@@ -41,13 +41,13 @@ public class GameManager : MonoBehaviour
     }
 
     //ToDo: implement as event
-    public void NotifyHealthChange(int remainingHealth) {
-        
+    public void NotifyHealthChange(int remainingHealth) // ENCAPSULATION
+    {
         healthText.text = $"Health: {remainingHealth}";
     }
 
     //ToDo: implement as event
-    public void NotifyObstaclePassed(int points)
+    public void NotifyObstaclePassed(int points) // ENCAPSULATION
     {
         totalScore += points;
         scoreText.text = $"Score: {totalScore}";
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         CheckDifficulty(totalScore);
     }
 
-    private void CheckDifficulty(int totalScore)
+    private void CheckDifficulty(int totalScore) // ABSTRACTION
     {
         var level = totalScore / levelUpStep;
 
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnObstacles()
+    private IEnumerator SpawnObstacles() // ABSTRACTION
     {
         while (IsGameActive)
         {

@@ -12,7 +12,7 @@ namespace Assets.Scripts
             Move();
         }
 
-        protected abstract void Move();
+        protected abstract void Move(); // ABSTRACTION
 
         protected virtual void CheckBoundaries()
         {

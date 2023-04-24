@@ -1,7 +1,7 @@
 using Assets.Scripts;
 using UnityEngine;
 
-public class PlayerController : MovingObject
+public class PlayerController : MovingObject // INHERITANCE
 {
     [SerializeField] private int health = 100;
     [SerializeField] private int zBoundaryMax = 0;
@@ -25,7 +25,7 @@ public class PlayerController : MovingObject
         base.Update();
     }
 
-    protected override void Move()
+    protected override void Move() // POLYMORPHISM
     {
         playerRigidBody.AddForce(Input.GetAxis("Horizontal") * horizontal_speed * Vector3.right);
         if (transform.position.z > zBoundaryMax)
@@ -38,7 +38,7 @@ public class PlayerController : MovingObject
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage) // ENCAPSULATION
     {
         health -= damage;
         gameManager.NotifyHealthChange(health);

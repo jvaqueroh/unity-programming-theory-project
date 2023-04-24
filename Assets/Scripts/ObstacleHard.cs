@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleHard : Obstacle
+public class ObstacleHard : Obstacle // INHERITANCE
 {
     private float directionModifier = 1.0f;
 
@@ -11,7 +11,7 @@ public class ObstacleHard : Obstacle
         strength = 20;
     }
 
-    protected override void Move()
+    protected override void Move() // POLYMORPHISM
     {
         base.Move();
         obstacleRigidBody.AddForce(Vector3.right * directionModifier * speed);
