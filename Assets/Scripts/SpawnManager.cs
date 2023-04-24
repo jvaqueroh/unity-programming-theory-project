@@ -5,7 +5,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject obstacleEasy;
     [SerializeField] private GameObject obstacleNormal;
     [SerializeField] private GameObject obstacleHard;
-    private readonly float xRange = 3.2f;
+    private readonly float xRange = 3.4f;
         
     public void SpawnObstacle()
     {
@@ -20,6 +20,6 @@ public class SpawnManager : MonoBehaviour
 
     private Vector3 GenerateSpawnPosition()
     {
-        return new Vector3(Random.Range(-xRange, xRange), .5f, 20.0f);
+        return new Vector3(Random.Range(-xRange, xRange), .5f, 50.0f);
     }
 }
