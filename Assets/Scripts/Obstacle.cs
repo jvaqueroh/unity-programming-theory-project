@@ -6,7 +6,7 @@ public class Obstacle : MovingObject
     protected Rigidbody obstacleRigidBody;
     private PlayerController playerController;
     private GameManager gameManager;
-    protected float speed = 20.0f;
+    protected float speed = 10.0f;
     protected int strength = 10;
 
     // Start is called before the first frame update
@@ -28,17 +28,17 @@ public class Obstacle : MovingObject
         obstacleRigidBody.AddForce(-Vector3.forward * speed);
     }
 
+    protected override void OnOutOfBoundaries()
+    {
+        base.OnOutOfBoundaries();
+        gameManager.NotifyObstaclePassed(strength);
+    }
+    
     protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             playerController.TakeDamage(strength);
         }
-    }
-
-    protected override void OnOutOfBoundaries()
-    {
-        base.OnOutOfBoundaries();
-        gameManager.NotifyObstaclePassed(strength);
     }
 }

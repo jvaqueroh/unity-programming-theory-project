@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleHard : Obstacle // INHERITANCE
@@ -8,6 +6,7 @@ public class ObstacleHard : Obstacle // INHERITANCE
 
     public ObstacleHard() : base()
     {
+        speed = 12.0f;
         strength = 20;
     }
 

@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ObstacleEasy : Obstacle
 {
     public ObstacleEasy() : base()
     {
-        speed = 10.0f;
+        speed = 7.0f;
         strength = 5;
     }
 }
